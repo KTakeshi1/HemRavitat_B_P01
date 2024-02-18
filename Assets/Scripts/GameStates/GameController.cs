@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("Game Data")]
+    [SerializeField] private float TapLimitDuration;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [Header("Dependencies")]
+    /*[SerializeField]
+    private Unit PlayerUnitPrefab;
+    [SerializeField]
+    public Transform PlayerUnitSpawnLocation;
+    */
+    //public UnitSpawner UnitSpawner {get; private set;}
+    [SerializeField]
+    public InputBroadcaster Input;
+
+    public float _tapLimitDuration => TapLimitDuration;
+
+    public InputBroadcaster _input => Input;
 }
