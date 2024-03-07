@@ -34,6 +34,6 @@ public class GameSetupState : State
     {
         base.Tick();
 
-        _stateMachine.ChangeState(_stateMachine.PlayState);
+        _stateMachine.ChangeState(_stateMachine.GameCombatstate);
     }
 }
