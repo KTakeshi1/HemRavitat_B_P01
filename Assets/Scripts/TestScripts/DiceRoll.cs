@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class CharacterBase
+public class DiceRoll : MonoBehaviour
 {
-    public int hitPoints {get; private set;} = 15;
-    public int energyPoints {get; private set;} = 30;
-    public int damagePoints {get; private set;} = 5;
+    public int rollVal;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,5 +18,8 @@ public abstract class CharacterBase
         
     }
 
-    
+    public void RollTheDice()
+    {
+        rollVal = Random.Range(1, 20);
+    }
 }

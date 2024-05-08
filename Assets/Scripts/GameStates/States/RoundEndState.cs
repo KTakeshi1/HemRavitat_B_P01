@@ -1,15 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class GamePlayState : State
+public class RoundEndState : State
 {
     private GameFSM _stateMachine;
     private GameController _controller;
 
     // Start is called before the first frame update
-    public GamePlayState(GameFSM stateMachine, GameController controller)
+    public RoundEndState(GameFSM stateMachine, GameController controller)
     {
         _stateMachine = stateMachine;
         _controller = controller;
@@ -18,34 +17,30 @@ public class GamePlayState : State
     public override void Enter()
     {
         base.Enter();
-
-        Debug.Log("STATE: Game Play");
-        Debug.Log("Listen for Player Inputs");
-        Debug.Log("Display Player Hud");
+        _controller.attackButton.enabled = true;
+        Debug.Log("STATE: Round End");
+        
     }
 
     public override void Exit()
     {
         base.Exit();
+        Debug.Log("END: Round End");
     }
 
     public override void FixedTick()
     {
         base.FixedTick();
+        if(_controller.attackButton)
+        {
+            _stateMachine.ChangeState(_stateMachine.GameCombatstate);
+        }
     }
 
     public override void Tick()
     {
         base.Tick();
 
-        if(_controller.Input.IsTapPressed == true)
-        {
-            Debug.Log("You Win!");
-        }
-        else if(StateDuration >= _controller._tapLimitDuration)
-        {
-            Debug.Log("You Lose!");
-            SceneManager.LoadScene(0);
-        }
+        
     }
 }

@@ -9,6 +9,9 @@ public class GameFSM : StateMachineMB
     
     public GameSetupState SetupState {get; private set; }
     public CombatState GameCombatstate {get; private set; }
+    public RestState GameReststate {get; private set; }
+    public MainState PlayerMainstate {get; private set; }
+    public RoundStartState StartRoundState {get; private set; }
     // Start is called before the first frame update
     private void Awake()
     {
@@ -16,6 +19,7 @@ public class GameFSM : StateMachineMB
 
         SetupState = new GameSetupState(this, _controller);
         GameCombatstate = new CombatState(this, _controller);
+        GameReststate = new RestState(this, _controller);
 
     }
 

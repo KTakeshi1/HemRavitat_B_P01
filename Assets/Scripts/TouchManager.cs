@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class TouchManager : MonoBehaviour
 {
+    private Camera _mainCamera;
     private PlayerInput playerInput;
 
     private InputAction touchPositionAction;
@@ -16,6 +17,7 @@ public class TouchManager : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         touchPressAction = playerInput.actions["TouchPress"];
         touchPositionAction = playerInput.actions["TouchPosition"];
+        _mainCamera = Camera.main;
     }
 
     private void OnEnable()
@@ -33,5 +35,15 @@ public class TouchManager : MonoBehaviour
         float value = context.ReadValue<float>();
         Debug.Log(value);
 
+    }
+
+    public void OnClick(InputAction.CallbackContext context)
+    {
+        if(!context.started) return;
+
+        var rayHit = Physics2D.GetRayIntersection(_mainCamera.ScreenPointToRay(pos:(Vector3)Mouse.current.position.ReadValue()));
+        if((!rayHit.collider)) return;
+
+        Debug.Log(rayHit.collider.gameObject.name);
     }
 }

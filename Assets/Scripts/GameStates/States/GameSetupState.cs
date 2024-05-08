@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CombatState : State
+
+public class GameSetupState : State
 {
     private GameFSM _stateMachine;
     private GameController _controller;
-
-    public CombatState(GameFSM stateMachine, GameController controller)
+    // Start is called before the first frame update
+    
+    public GameSetupState(GameFSM stateMachine, GameController controller)
     {
         _stateMachine = stateMachine;
         _controller = controller;
@@ -16,34 +18,22 @@ public class CombatState : State
     public override void Enter()
     {
         base.Enter();
-
-        Debug.Log("STATE: Combat Phase");
-        Debug.Log("Listen for Player Inputs");
-        Debug.Log("Display Player Hud");
+        Debug.Log("STATE: Game Setup");
+        
     }
-
     public override void Exit()
     {
         base.Exit();
+        Debug.Log("END: End Game Setup");
     }
-
     public override void FixedTick()
     {
         base.FixedTick();
     }
-
     public override void Tick()
     {
         base.Tick();
 
-        if(_controller.Input.IsTapPressed == true)
-        {
-            Debug.Log("You Win!");
-        }
-        else if(StateDuration >= _controller._tapLimitDuration)
-        {
-            Debug.Log("You Lose!");
-            
-        }
+        _stateMachine.ChangeState(_stateMachine.StartRoundState);
     }
 }
