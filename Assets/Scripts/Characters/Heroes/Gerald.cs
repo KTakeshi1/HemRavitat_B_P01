@@ -10,7 +10,7 @@ public class Gerald : MonoBehaviour
 
     public void AttackEnemy(int valmodifier)
     {
-        dmgpoints = valmodifier * dmgpoints;
+        dmgpoints = valmodifier + dmgpoints;
     }
 
 }

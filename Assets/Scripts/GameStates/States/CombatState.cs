@@ -49,6 +49,7 @@ public class CombatState : State
         _controller._cyrille.AttackEnemy(_controller._rollDice.rollVal);
         _controller._gerald.AttackEnemy(_controller._rollDice.rollVal);
         
+        
         _controller._damageAmt =_controller._damien.dmgpoints + _controller._sabine.dmgpoints + _controller._cyrille.dmgpoints + _controller._gerald.dmgpoints;
         _controller._goblins.currenthitpoints = _controller._goblins.currenthitpoints - _controller._damageAmt;
 

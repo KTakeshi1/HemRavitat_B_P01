@@ -10,6 +10,6 @@ public class Goblin : MonoBehaviour
 
     public void AttackPlayer(int valmodifier)
     {
-        dmgpoints = valmodifier * dmgpoints;
+        dmgpoints = valmodifier + dmgpoints;
     }
 }

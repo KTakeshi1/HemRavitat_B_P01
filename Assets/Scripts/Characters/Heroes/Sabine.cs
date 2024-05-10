@@ -10,6 +10,6 @@ public class Sabine : MonoBehaviour
 
     public void AttackEnemy(int valmodifier)
     {
-        dmgpoints = valmodifier * dmgpoints;
+        dmgpoints = valmodifier + dmgpoints;
     }
 }
