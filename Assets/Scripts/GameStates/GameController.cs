@@ -11,6 +11,11 @@ public class GameController : MonoBehaviour
     [SerializeField] private float TapLimitDuration;
     [SerializeField] public int _turnNumber;
     [SerializeField] public int _rollModifier;
+    [SerializeField] public int _rollModifierEnemy;
+    [SerializeField] public int _damageAmt;
+    [SerializeField] public int _damageAmtEnemy;
+    [SerializeField] public GameObject _winState;
+    [SerializeField] public GameObject _loseState;
 
     [Header("Characters")]
     public Damien _damien;
@@ -18,6 +23,8 @@ public class GameController : MonoBehaviour
     public Sabine _sabine;
     public Cyrille _cyrille;
 
+    [Header("Enemies")]
+    public Goblin _goblins;
     
     [Header("Script Calls")]
     public DiceRoll _rollDice;
@@ -28,10 +35,11 @@ public class GameController : MonoBehaviour
     //public TextMeshProUGUI _gameInfo;
     public TextMeshProUGUI _PlayerTurnStatus;
     public TextMeshProUGUI _NextTurnText;
-
-    [Header("Panels")]
-    public GameObject _ShopObj;
-    public GameObject _WinnerPanel;
+    public TextMeshProUGUI _damienHealth;
+    public TextMeshProUGUI _geraldHealth;
+    public TextMeshProUGUI _sabineHealth;
+    public TextMeshProUGUI _cyrilleHealth;
+    public TextMeshProUGUI _enemyHealth;
 
     [Header("Buttons")]
     public Button attackButton;
@@ -59,6 +67,10 @@ public class GameController : MonoBehaviour
     {
         _TransitionToNextRound = true;
         
+    }
+    public void DiceRollEnenmy()
+    {
+        _rollModifierEnemy = Random.Range(1, 6);
     }
 
 }

@@ -17,7 +17,8 @@ public class WonState : State
     public override void Enter()
     {
         base.Enter();
-        _controller.attackButton.enabled = true;
+        _controller._winState.SetActive(true);
+        _controller.attackButton.enabled = false;
         Debug.Log("STATE: You Won!");
         
     }
@@ -31,10 +32,7 @@ public class WonState : State
     public override void FixedTick()
     {
         base.FixedTick();
-        if(_controller.attackButton)
-        {
-            _stateMachine.ChangeState(_stateMachine.GameCombatstate);
-        }
+        
     }
 
     public override void Tick()

@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoundEndState : State
+public class DefeatState : State
 {
     private GameFSM _stateMachine;
     private GameController _controller;
 
     // Start is called before the first frame update
-    public RoundEndState(GameFSM stateMachine, GameController controller)
+    public DefeatState(GameFSM stateMachine, GameController controller)
     {
         _stateMachine = stateMachine;
         _controller = controller;
@@ -17,22 +17,22 @@ public class RoundEndState : State
     public override void Enter()
     {
         base.Enter();
-        _controller.attackButton.enabled = true;
-        Debug.Log("STATE: Round End");
+        _controller._loseState.SetActive(true);
+        _controller.attackButton.enabled = false;
+        Debug.Log("STATE: You Won!");
         
     }
 
     public override void Exit()
     {
         base.Exit();
-        Debug.Log("END: Round End");
+        Debug.Log("END: You Won!");
     }
 
     public override void FixedTick()
     {
         base.FixedTick();
-        _stateMachine.ChangeState(_stateMachine.StartRoundState);
-    
+        
     }
 
     public override void Tick()

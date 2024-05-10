@@ -19,6 +19,11 @@ public class GameSetupState : State
     {
         base.Enter();
         Debug.Log("STATE: Game Setup");
+        _controller._damienHealth.text = _controller._damien.currenthitpoints.ToString();
+        _controller._cyrilleHealth.text = _controller._cyrille.currenthitpoints.ToString();
+        _controller._sabineHealth.text = _controller._sabine.currenthitpoints.ToString();
+        _controller._geraldHealth.text = _controller._gerald.currenthitpoints.ToString();
+        _controller._enemyHealth.text = _controller._goblins.currenthitpoints.ToString();
         
     }
     public override void Exit()

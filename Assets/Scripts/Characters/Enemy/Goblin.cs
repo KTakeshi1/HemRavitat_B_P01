@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class Goblin : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int hitpoints = 45;
+    public int currenthitpoints = 45;
+    public int dmgpoints = 4;
 
-    // Update is called once per frame
-    void Update()
+    public void AttackPlayer(int valmodifier)
     {
-        
+        dmgpoints = valmodifier * dmgpoints;
     }
 }

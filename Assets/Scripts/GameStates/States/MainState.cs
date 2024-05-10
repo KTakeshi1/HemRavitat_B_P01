@@ -19,7 +19,8 @@ public class MainState : State
     public override void Enter()
     {
         base.Enter();
-        _controller._PlayerTurnStatus.text = _controller._turnNumber.ToString();
+        _controller.attackButton.enabled = true;
+        _controller._rollDice.isAttack = false;
         Debug.Log("STATE: Game Main");
         
     }
@@ -32,6 +33,11 @@ public class MainState : State
     public override void FixedTick()
     {
         base.FixedTick();
+        if(_controller._rollDice.isAttack == true)
+        {
+            _stateMachine.ChangeState(_stateMachine.GameCombatstate);
+            _controller._rollDice.isAttack = false;
+        }
     }
 
     public override void Tick()

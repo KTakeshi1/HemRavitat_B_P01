@@ -5,6 +5,7 @@ using UnityEngine;
 public class DiceRoll : MonoBehaviour
 {
     public int rollVal;
+    public bool isAttack = false;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,8 @@ public class DiceRoll : MonoBehaviour
 
     public void RollTheDice()
     {
-        rollVal = Random.Range(1, 20);
+        rollVal = Random.Range(1, 6);
+        Debug.Log(rollVal);
+        isAttack = true;
     }
 }
